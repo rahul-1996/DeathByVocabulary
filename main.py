@@ -1,6 +1,7 @@
 import string
 import collections
 import words
+import words2
 import pickle
 import networkx as nx
 
@@ -68,10 +69,10 @@ def transformWord(graph, start, goal):
     return []
 
 print("First step")
-dictionary = words.dictionary  
+dictionary = words2.dictionary  
 graph = constructGraph(dictionary)
 print("second step")
-nx.write_gpickle(graph,"test.gpickle")
+nx.write_gpickle(graph,"test2.gpickle")
 print("third step")
 print(transformWord(graph , 'time' , 'space'))
 

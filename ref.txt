@@ -45,3 +45,14 @@
     #    length=nx.bidirectional_dijkstra(G,node1,node2)
 
     #words = transformWord(G,visited[0],visited[a1])    
+    ----------------------------------------------------------
+    node1 =random.choice(G.nodes())
+    node2=random.choice(G.nodes())
+    while(node2 == node1):
+        node2=random.choice(G.nodes())
+    words=transformWord(G,node1,node2)
+    while(words == [] or len(words)>6):
+        node1=random.choice(G.nodes())
+        node2=random.choice(G.nodes())
+        words=transformWord(G,node1,node2)
+    return render_template('index.html',words =map(json.dumps,words),node1=node1,node2=node2)
