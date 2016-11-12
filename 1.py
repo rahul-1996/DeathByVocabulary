@@ -22,4 +22,4 @@ def transformWord(graph, start, goal):
     return []
 
 G=nx.read_gpickle('test.gpickle')
-print(transformWord(G,'time','gone'))
+print(len(transformWord(G,'time','gone')))

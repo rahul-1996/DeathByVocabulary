@@ -1,0 +1,47 @@
+#    node1 = random.choice(G.nodes())
+#    print(node1)
+#    while((G.neighbors(node1)==[]) or (len(G.neighbors(node1))<20)):
+#        node1 = random.choice(G.nodes())
+#    a1 = random.randint(4,8)
+#    print(123,a1)
+#    visited = [node1]
+#    for i in range(a1):       
+#        lst = G.neighbors(node1)
+#        rchoice = random.choice(lst)
+#        print(rchoice)
+#        while((G.neighbors(rchoice)==[]) or (len(G.neighbors(rchoice))==1)):
+#            rchoice = random.choice(lst)
+#        while rchoice in visited:
+#               rchoice = random.choice(lst)
+#        visited.append(rchoice)
+#        node1 = rchoice
+    node1 = random.choice(G.nodes())
+    node2 = random.choice(G.nodes())
+
+    while (node2 == node1):
+        node2=random.choice(G.nodes())
+    words = transformWord(G,node1,node2)
+    while(words == []):
+        words=transformWord(G,node1,node2)
+   # while(len(words) < 3 or len(words) > 8 ):
+   #     words = transformWord(G,node1,node2)
+        
+        
+    #a1 = random.randint(3,7)
+    #for i in range(a1):
+    #lst = nx.node_connected_component(G,node1)
+    #lst.remove(node1)
+    #node2 = random.sample(lst,1)
+    
+    #while(G.has_edge(node1,node2[0])):
+     #   lst = nx.node_connected_component(G,node1)
+     #   lst.discard(node1)
+     #   node2 = random.sample(lst,1)   
+
+    #length=nx.bidirectional_dijkstra(G,node1,node2)
+    #while(length[0]<=1):
+    #    node1 = random.choice(G.nodes())
+    #    node2 = random.choice(G.nodes())
+    #    length=nx.bidirectional_dijkstra(G,node1,node2)
+
+    #words = transformWord(G,visited[0],visited[a1])    

@@ -28,36 +28,9 @@ G=nx.read_gpickle('test.gpickle')
 
 @app.route('/')
 def gg():
-    node1 = random.choice(G.nodes())
-    a1 = random.randint(3,7)
-    visited = [node1]
-    for i in range(a1):       
-        lst = G.neighbors(node1)
-        rchoice = random.choice(lst)
-        while rchoice in visited:
-               rchoice = random.choice(lst)
-        visited.append(rchoice)
-        node1 = rchoice
-        
-        
-    #a1 = random.randint(3,7)
-    #for i in range(a1):
-    #lst = nx.node_connected_component(G,node1)
-    #lst.remove(node1)
-    #node2 = random.sample(lst,1)
-    
-    #while(G.has_edge(node1,node2[0])):
-     #   lst = nx.node_connected_component(G,node1)
-     #   lst.discard(node1)
-     #   node2 = random.sample(lst,1)   
-
-    #length=nx.bidirectional_dijkstra(G,node1,node2)
-    #while(length[0]<=1):
-    #    node1 = random.choice(G.nodes())
-    #    node2 = random.choice(G.nodes())
-    #    length=nx.bidirectional_dijkstra(G,node1,node2)
-
-    words = transformWord(G,visited[0],visited[a1])
-    
-        
-    return render_template('index.html',words = map(json.dumps,words),node1 = visited[0],node2 = visited[a1])
+    node1 =random.choice(G.nodes())
+    node2=random.choice(G.nodes())
+    while(len(node2)<3 and len(node1) < 3 and len(node1) >8 and len(node2)>8) :
+        node2=random.choice(G.nodes())
+    words=transformWord(G,'time','space')
+    return render_template('index.html',words =map(json.dumps,words),node1=node1,node2=node2)
