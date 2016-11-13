@@ -29,10 +29,10 @@ G=nx.read_gpickle('test3.gpickle')
 def generateStartEnd():
     flag = True
     while flag:
-        node1=random.choice(G.nodes())
+        node1 = random.choice(G.nodes())
         node2 = random.choice(G.nodes())
         try:
-            isConnected=nx.bidirectional_dijkstra(G,node1,node2)
+            isConnected = nx.bidirectional_dijkstra(G,node1,node2)
         except:
             node1=random.choice(G.nodes())
             node2=random.choice(G.nodes())
@@ -47,7 +47,9 @@ def generateOptions(words):
         randChoice = random.choice(G.neighbors(i))
         if randChoice not in words:
             options.append(randChoice)
-    return options
+    newlist = options + words[1:len(words)-1]
+    random.shuffle(newlist)
+    return newlist
 
 @app.route('/')
 def gg():
