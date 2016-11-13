@@ -26,8 +26,7 @@ def transformWord(graph, start, goal):
 
 G=nx.read_gpickle('test3.gpickle')
 
-@app.route('/')
-def gg():
+def generateStartEnd():
     flag = True
     while flag:
         node1=random.choice(G.nodes())
@@ -40,4 +39,18 @@ def gg():
         words=transformWord(G,node1,node2)
         if len(words) > 3 and len(words) < 8:
             flag=False
-    return render_template('index.html',words=map(json.dumps,words))
+    return words
+
+def generateOptions(words):
+    options=[]
+    for i in words:
+        randChoice = random.choice(G.neighbors(i))
+        if randChoice not in words:
+            options.append(randChoice)
+    return options
+
+@app.route('/')
+def gg():
+    words = generateStartEnd()
+    options = generateOptions(words)
+    return render_template('index.html',words=map(json.dumps,words),options=map(json.dumps,options))

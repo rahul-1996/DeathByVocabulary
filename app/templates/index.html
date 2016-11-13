@@ -3,8 +3,13 @@
         <title>Test</title>   
     </head>
     <body>>
+         <h1>Path itself</h1>
          {%for item in words %}
             <span>{{item}}</span>
         {% endfor %}
+        <h2>The options</h2>
+            {% for item in options %}
+                <span> {{item}} </span>
+            {% endfor %}
     </body>
 </html>
