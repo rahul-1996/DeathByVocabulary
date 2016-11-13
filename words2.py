@@ -1,4 +1,4 @@
-dictionary=["aa",
+dictionary = ["aa",
 "aardvark",
 "aargh",
 "aback",

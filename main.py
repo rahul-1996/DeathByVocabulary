@@ -5,7 +5,7 @@ import words2
 import pickle
 import networkx as nx
 
-names = words.dictionary
+names = words2.dictionary
 
 def binarySearch(nameSearch):
     global names, found, lower_bound, middle_pos, upper_bound
@@ -30,7 +30,7 @@ def binarySearch(nameSearch):
 
 def constructGraph(dictionary):
     G=nx.Graph()
-    G.add_nodes_from(words.dictionary)
+    G.add_nodes_from(words2.dictionary)
     letters=string.ascii_lowercase
     for word in dictionary:
         for i in range(len(word)):

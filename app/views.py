@@ -24,28 +24,20 @@ def transformWord(graph, start, goal):
     #no transformation
     return []
 
-G=nx.read_gpickle('test2.gpickle')
+G=nx.read_gpickle('test3.gpickle')
 
 @app.route('/')
 def gg():
-    flag=True
+    flag = True
     while flag:
         node1=random.choice(G.nodes())
-        while(not G.neighbors(node1) or len(G.neighbors(node1)) < 20):
-            node1 = random.choice(G.nodes())
-        print(node1)
-        check=random.randint(4,8)
-        print(check)
-        visited=[node1]
-        for i in range(check):
-            randChoice=random.choice(G.neighbors(node1))
-            while((randChoice in visited) or (not G.neighbors(randChoice)) or (len(G.neighbors(randChoice)) < 20)):
-                randChoice=random.choice(G.neighbors(node1))
-            print(randChoice)
-            visited.append(randChoice)
-            node1 = randChoice
-        print(visited[check])
-        words=transformWord(G,visited[0],visited[check])
-        if(len(words) > 4):
-            flag = False
-    return render_template('index.html',words = map(json.dumps,words))
+        node2 = random.choice(G.nodes())
+        try:
+            isConnected=nx.bidirectional_dijkstra(G,node1,node2)
+        except:
+            node1=random.choice(G.nodes())
+            node2=random.choice(G.nodes())
+        words=transformWord(G,node1,node2)
+        if len(words) > 3:
+            flag=False
+    return render_template('index.html',words=map(json.dumps,words))
