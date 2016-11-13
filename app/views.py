@@ -38,6 +38,6 @@ def gg():
             node1=random.choice(G.nodes())
             node2=random.choice(G.nodes())
         words=transformWord(G,node1,node2)
-        if len(words) > 3:
+        if len(words) > 3 and len(words) < 8:
             flag=False
     return render_template('index.html',words=map(json.dumps,words))
