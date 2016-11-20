@@ -1,4 +1,3 @@
-import string
 import collections
 import words
 import words2
@@ -48,6 +47,8 @@ def constructGraph(dictionary):
                     G.add_edge(word,add)
  
     return G
+
+#Citation : transformWord function using BFS adopted from http://www.ardendertat.com/2011/10/17/transform-word/
 
 def transformWord(graph, start, goal):
     paths=collections.deque([ [start] ])

@@ -5,6 +5,9 @@ import json
 import collections
 import random
 
+
+#Citation : transformWord function using BFS adopted from http://www.ardendertat.com/2011/10/17/transform-word/
+
 def transformWord(graph, start, goal):
     paths=collections.deque([ [start] ])
     extended=set()
@@ -19,7 +22,6 @@ def transformWord(graph, start, goal):
         transforms=graph[currentWord]
         for word in transforms:
             if word not in currentPath:
-                #avoid loops
                 paths.append(currentPath[:]+[word])
     #no transformation
     return []
@@ -27,17 +29,20 @@ def transformWord(graph, start, goal):
 G=nx.read_gpickle('test3.gpickle')
 
 def generateStartEnd():
+    lower_limit = 3
+    upper_limit = 8
     flag = True
     while flag:
-        node1 = random.choice(G.nodes())
+        node1=random.choice(G.nodes())
         node2 = random.choice(G.nodes())
-        try:
-            isConnected = nx.bidirectional_dijkstra(G,node1,node2)
+        try: # Using networkx function bidrectional_dijkstra
+            isConnected=nx.bidirectional_dijkstra(G,node1,node2)
         except:
             node1=random.choice(G.nodes())
             node2=random.choice(G.nodes())
         words=transformWord(G,node1,node2)
-        if len(words) > 3 and len(words) < 8:
+        #To make sure edit distance is not too large or too small.
+        if len(words) > lower_limit and len(words) < upper_limit:
             flag=False
     return words
 
@@ -51,8 +56,19 @@ def generateOptions(words):
     random.shuffle(newlist)
     return newlist
 
+
+
+@app.route('/home')
+def home():
+    return render_template('home.html')
 @app.route('/')
-def gg():
+def something() :
     words = generateStartEnd()
     options = generateOptions(words)
-    return render_template('index.html',words=map(json.dumps,words),options=map(json.dumps,options))
+    return render_template('index.html',words=words,lengthoptions=len(options),lengthwords=len(words),options=options)
+@app.route('/won')
+def won():
+    return render_template('won.html')
+@app.route('/lose')
+def lose():
+    return render_template('lose.html')    

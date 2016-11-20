@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Death by Vocabulary</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="/static/particles.js-master/demo/css/style.css">
+<style>
+		body {
+  margin: 0;
+  background: #000; 
+}
+.stopfade { 
+   opacity: .5;
+}
+
+#polina { 
+  font-family: 'Cinzel';
+  font-weight:100;
+  position:absolute;
+  top:200px;
+  left:520px; 
+  background: rgba(0,0,0,0.3);
+  color: white;
+  padding: 2rem;
+  width: 33%;
+  margin:2rem;
+  float: right;
+  font-size: 1.2rem;
+}
+h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin-top: 0;
+  letter-spacing: .3rem;
+}
+#polina button { 
+  display: block;
+  width: 80%;
+  padding: .4rem;
+  border: none; 
+  margin: 1rem auto; 
+  font-size: 1.3rem;
+  background: rgba(255,255,255,0.23);
+  color: #fff;
+  border-radius: 3px; 
+  cursor: pointer;
+  transition: .3s background;
+}
+#polina button:hover { 
+   background: rgba(0,0,0,0.5);
+}
+
+a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  
+  padding: .5rem;
+  transition: .6s background; 
+}
+a:hover{
+  background:rgba(0,0,0,0.9);
+}
+@media screen and (max-width: 500px) { 
+  div{width:70%;} 
+}
+@media screen and (max-device-width: 800px) {
+  html { background: url(//demosthenes.info/assets/images/polina.jpg) #000 no-repeat center center fixed; }
+  #bgvid { display: none; }
+}
+.footer{
+	font-size:0.3em;
+	position:absolute;
+	bottom:0px;
+}
+</style>
+</head>
+
+<body id="main">
+
+<!-- Citation : particle background adopted from https://github.com/VincentGarreau/particles.js/ -->
+
+<!-- particles.js container -->
+<div id="particles-js"></div>
+
+<!-- scripts -->
+<script src="/static/particles.js-master/particles.js"></script>
+<script src="/static/particles.js-master/demo/js/app.js"></script>
+
+
+<div id="polina">
+<h1><strong>Welcome to Death by Vocabulary</strong></h1></br>
+<p>Classic Hangman, with a twist.</p></br>
+<p> You are a prisoner on the death row, tried and found guilty for war crimes you didn't commit.</br>
+The only way of escape is to spell your way out.</br></p>
+<p>You have a start and end word. We give you the options, choose them in the correct order.</p>
+<button><a href="/">Get started.</a></button>
+</div>	</body>
+</html>
+</body>
+</html>
